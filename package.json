@@ -15,5 +15,8 @@
     "sass": "sass src/scss/main.scss src/scss/main.css",
     "sass:watch": "sass --watch src/scss/main.scss:src/scss/main.css",
     "build": "npm run sass"
+  },
+  "devDependencies": {
+    "sass": "^1.93.2"
   }
 }
