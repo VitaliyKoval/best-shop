@@ -48,7 +48,7 @@ function initSwiper(selector) {
   const container = document.querySelector(selector);
   if (!container) return;
 
-  new Swiper(selector, {
+  const swiper = new Swiper(selector, {
     slidesPerView: "auto",
     freeMode: true,
     loop: false,
@@ -60,6 +60,8 @@ function initSwiper(selector) {
       prevEl: ".swiper-button-prev",
     },
   });
+
+  if (!swiper) return;
 }
 
 // ====================== TRAVEL SWIPER INIT ======================
@@ -68,7 +70,7 @@ function initTravelsSwiper() {
   const container = document.querySelector(selector);
   if (!container) return;
 
-  new Swiper(selector, {
+  const swiper = new Swiper(selector, {
     slidesPerView: "auto",
     freeMode: true,
     loop: false,
@@ -78,6 +80,8 @@ function initTravelsSwiper() {
       prevEl: ".swiper-button-prev",
     },
   });
+
+  if (!swiper) return;
 }
 
 // ====================== GALLERY SWIPER INIT ======================
@@ -86,7 +90,7 @@ function initGallerySwiper() {
   const container = document.querySelector(selector);
   if (!container) return;
 
-  new Swiper(selector, {
+  const swiper = new Swiper(selector, {
     slidesPerView: "auto",
     freeMode: true,
     loop: false,
@@ -96,6 +100,8 @@ function initGallerySwiper() {
       prevEl: ".swiper-button-prev",
     },
   });
+
+  if (!swiper) return;
 }
 
 // ====================== NAVIGATE ======================
