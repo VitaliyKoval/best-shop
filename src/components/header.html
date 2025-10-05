@@ -1,0 +1,62 @@
+<div class="wrapper">
+  <div class="header-bar">
+    <div class="social-icons">
+      <a href="#" class="fab fa-facebook"></a>
+      <a href="#" class="fab fa-twitter"></a>
+      <a href="#" class="fab fa-instagram"></a>
+    </div>
+    <a href="#/" class="logo"></a>
+    <div class="header-icons">
+      <a href="" class="fas fa-user"></a>
+      <a href="#/cart" class="fas fa-shopping-cart"
+        ><span class="cart-badge"></span
+      ></a>
+    </div>
+  </div>
+  <nav class="header-nav">
+    <ul>
+      <li><a href="#/">Home</a></li>
+      <li><a href="#/catalog">Catalog</a></li>
+      <li><a href="#/about">About Us</a></li>
+      <li><a href="#/contact">Contact Us</a></li>
+    </ul>
+  </nav>
+</div>
+<div class="tooltip hidden">Suitcase added to cart!</div>
+<div class="modal">
+  <div class="overlay"></div>
+  <div class="modal-window">
+    <div class="modal-container">
+      <h2 class="modal-title">Sign In to Your Account</h2>
+      <form action="#" method="post" class="modal-form" novalidate>
+        <div class="modal-email">
+          <label for="email">Email <span>*</span></label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+          />
+          <small class="error-message"></small>
+        </div>
+
+        <div class="modal-password">
+          <label for="password">Password <span>*</span></label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            required
+            minlength="6"
+          />
+          <small class="error-message"></small>
+        </div>
+
+        <button type="submit" class="modal-button">Log In</button>
+      </form>
+    </div>
+    <i class="modal-close"></i>
+  </div>
+</div>

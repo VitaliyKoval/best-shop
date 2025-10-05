@@ -1,0 +1,42 @@
+<section class="shop-section">
+  <div class="wrapper">
+    <div class="shop-content">
+      <div class="shop-toolbar">
+        <div class="results-info"></div>
+
+        <div class="toolbar-controls">
+          <label for="sort-select">
+            <select id="sort-select" class="sort-select" name="sort">
+              <option value="default">Default Sorting</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="popularity">By Popularity</option>
+              <option value="rating">By Rating</option>
+            </select>
+            <i class="select-arrow"></i>
+          </label>
+
+          <label for="search-models">
+            <input
+              id="search-models"
+              class="search-models"
+              type="search"
+              placeholder="Search Models"
+            />
+            <i class="search-icon"></i>
+          </label>
+        </div>
+      </div>
+
+      <div class="content-with-sidebar">
+        <div class="products-container"></div>
+        <aside class="shop-sidebar">
+          <h2 class="widget-title">Top Best Sets</h2>
+          <div class="best-products-container"></div>
+        </aside>
+      </div>
+
+      <nav class="pagination"></nav>
+    </div>
+  </div>
+</section>

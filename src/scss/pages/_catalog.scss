@@ -1,0 +1,203 @@
+@use "../abstracts/mixins" as *;
+
+.shop-section {
+  .wrapper {
+    @include wrapper;
+
+    .shop-content {
+      margin-top: 60px;
+
+      .shop-toolbar {
+        min-height: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .results-info {
+          font-family: var(--font-family);
+          font-weight: 400;
+          font-size: 16px;
+          color: #504e4a;
+          line-height: 1.5;
+
+          @media (max-width: 768px) {
+            display: none;
+          }
+        }
+
+        .toolbar-controls {
+          display: flex;
+          gap: 50px;
+
+          @media (max-width: 768px) {
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin: 0 auto;
+          }
+
+          label {
+            position: relative;
+
+            .sort-select {
+              width: 200px;
+              line-height: 37px;
+              padding: 0 10px;
+              border: 2px solid #e9e9ed;
+              font-family: var(--font-family);
+              font-weight: 400;
+              font-size: 16px;
+              color: #504e4a;
+              appearance: none;
+            }
+
+            .select-arrow {
+              position: absolute;
+              right: 10px;
+              top: 50%;
+              transform: translateY(-50%);
+              width: 10px;
+              height: 6px;
+              background-image: url("../assets/arrow2.svg");
+              background-position: center;
+              background-size: contain;
+              background-repeat: no-repeat;
+              pointer-events: none;
+            }
+          }
+
+          label {
+            position: relative;
+
+            .search-models {
+              width: 340px;
+              line-height: 37px;
+              padding: 0 10px;
+              border: 2px solid #e9e9ed;
+              font-family: var(--font-family);
+              font-weight: 400;
+              font-size: 16px;
+              color: #000;
+
+              @media (max-width: 340px) {
+                max-width: 320px;
+              }
+            }
+
+            .search-icon {
+              position: absolute;
+              right: 10px;
+              top: 50%;
+              transform: translateY(-50%);
+              width: 17px;
+              height: 17px;
+              background-image: url("../assets/search.svg");
+              background-position: center;
+              background-size: contain;
+              background-repeat: no-repeat;
+            }
+
+            .search-models::placeholder {
+              color: #504e4a;
+            }
+
+            .search-models:focus + .search-icon {
+              display: none;
+            }
+
+            .search-models:focus::placeholder {
+              color: transparent;
+            }
+          }
+        }
+      }
+
+      .content-with-sidebar {
+        display: flex;
+        gap: 50px;
+
+        @media (max-width: 1024px) {
+          flex-wrap: wrap;
+        }
+
+        .products-container {
+          margin-top: 35px;
+          max-width: 910px;
+          display: flex;
+          justify-content: center;
+          gap: 50px 10px;
+          flex-wrap: wrap;
+
+          @media (max-width: 1024px) {
+            width: 100%;
+            order: 1;
+          }
+        }
+
+        .shop-sidebar {
+          margin-top: 35px;
+
+          .widget-title {
+            font-family: var(--font-family);
+            font-weight: 700;
+            font-size: 17px;
+            color: #000;
+
+            @media (max-width: 1024px) {
+              text-align: center;
+            }
+          }
+
+          .best-products-container {
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex-wrap: wrap;
+
+            @media (max-width: 1024px) {
+              flex-direction: row;
+            }
+          }
+        }
+      }
+    }
+
+    .pagination {
+      margin: 60px auto 120px;
+      height: 40px;
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+
+      button {
+        padding: 0 15px;
+        background: #fff;
+        border-radius: 5px;
+        font-family: var(--second-family);
+        font-weight: 500;
+        font-size: 15px;
+        color: #000;
+        cursor: pointer;
+
+        &.active {
+          background: #b92770;
+          color: #fff;
+        }
+      }
+
+      button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .nav-btn {
+        margin-left: 300px;
+        border: 2px solid #b92770;
+        @media (max-width: 768px) {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}

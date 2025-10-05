@@ -1,0 +1,163 @@
+@use "../abstracts/mixins" as *;
+
+.about {
+  background: url("/src/assets/bg_1.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 554px;
+
+  .wrapper {
+    @include wrapper;
+
+    .about-content {
+      margin: 0 auto;
+      max-width: 450px;
+      padding-top: 210px;
+
+      .about-title {
+        text-align: center;
+        font-family: var(--font-family);
+        font-weight: 700;
+        font-size: 50px;
+        color: #fff;
+      }
+
+      .about-text {
+        margin-top: 25px;
+        text-align: center;
+        font-family: var(--font-family);
+        font-weight: 400;
+        font-size: 17px;
+        color: #e9e9ed;
+        line-height: 1.5;
+      }
+    }
+  }
+}
+
+.features {
+  .wrapper {
+    @include wrapper;
+
+    .features-list {
+      padding: 130px 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      .feature-item {
+        @media (max-width: 1024px) {
+          width: 50%;
+
+          &:nth-child(n + 3) {
+            margin-top: 30px;
+          }
+        }
+
+        @media (max-width: 768px) {
+          width: 100%;
+
+          &:nth-child(n + 2) {
+            margin-top: 30px;
+          }
+        }
+
+        .feature-item-icon {
+          margin: 0 auto;
+          width: 62px;
+          height: 62px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          overflow: hidden;
+        }
+
+        .feature-item-title {
+          margin-top: 20px;
+          text-align: center;
+          font-family: var(--font-family);
+          font-weight: 700;
+          font-size: 20px;
+          color: #000;
+        }
+
+        .feature-item-text {
+          margin: 20px auto 0;
+          max-width: 250px;
+          text-align: center;
+          font-family: var(--font-family);
+          font-weight: 400;
+          font-size: 17px;
+          color: #000;
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+}
+
+.team {
+  .wrapper {
+    @include wrapper;
+    text-align: center;
+
+    .team-title {
+      display: inline-block;
+
+      font-family: var(--font-family);
+      font-weight: 900;
+      font-size: 40px;
+      color: #000;
+      line-height: 1.5;
+      border-bottom: 2px solid #b92770;
+    }
+
+    .team-members {
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 35px;
+
+      .team-member {
+        max-width: 410px;
+
+        .team-photo {
+          width: 100%;
+          height: auto;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          overflow: hidden;
+        }
+
+        .team-name {
+          margin-top: 30px;
+          text-align: center;
+          font-family: var(--font-family);
+          font-weight: 700;
+          font-size: 22px;
+          color: #000;
+        }
+
+        .team-role {
+          margin-top: 30px;
+          text-align: center;
+          font-family: var(--font-family);
+          font-weight: 400;
+          font-size: 17px;
+          color: #000;
+        }
+      }
+    }
+  }
+}
+
+.offer-section {
+  .wrapper {
+    @include wrapper;
+    margin-top: 120px;
+    margin-bottom: 120px;
+  }
+}
