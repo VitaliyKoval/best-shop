@@ -48,7 +48,7 @@ function initSwiper(selector) {
   const container = document.querySelector(selector);
   if (!container) return;
 
-  const swiper = new Swiper(selector, {
+  new Swiper(selector, {
     slidesPerView: "auto",
     freeMode: true,
     loop: false,
@@ -68,7 +68,7 @@ function initTravelsSwiper() {
   const container = document.querySelector(selector);
   if (!container) return;
 
-  const swiper = new Swiper(selector, {
+  new Swiper(selector, {
     slidesPerView: "auto",
     freeMode: true,
     loop: false,
@@ -86,7 +86,7 @@ function initGallerySwiper() {
   const container = document.querySelector(selector);
   if (!container) return;
 
-  const swiper = new Swiper(selector, {
+  new Swiper(selector, {
     slidesPerView: "auto",
     freeMode: true,
     loop: false,
@@ -111,7 +111,7 @@ async function navigate(path) {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 
     switch (path) {
-      case "/":
+      case "/": {
         await loadProductCards(
           ".selected-products-container",
           "Selected Products"
@@ -130,8 +130,9 @@ async function navigate(path) {
 
         initProductCardClick(".product-card");
         break;
+      }
 
-      case "/catalog":
+      case "/catalog": {
         await loadBestProductCards(".best-products-container", "Top Best Sets");
         await loadAllProductCards(".products-container");
         initAddToCart(".products-container");
@@ -151,8 +152,9 @@ async function navigate(path) {
         initSearchModelsHandler();
         initSearchHandler();
         break;
+      }
 
-      case "/product":
+      case "/product": {
         if (!selectedProduct) {
           const saved = localStorage.getItem("selectedProduct");
           if (saved) {
@@ -169,12 +171,17 @@ async function navigate(path) {
         initReviewFormValidation();
         initGallerySwiper();
         break;
-      case "/cart":
+      }
+
+      case "/cart": {
         loadCart();
         break;
-      case "/contact":
+      }
+
+      case "/contact": {
         initContactFormValidation();
         break;
+      }
     }
   } catch (err) {
     content.innerHTML = "<h1>Page not found</h1>";
@@ -360,18 +367,22 @@ async function loadAllProductCards(
 
     let products = [...allProductsCache];
     switch (sortType) {
-      case "price-asc":
+      case "price-asc": {
         products.sort((a, b) => a.price - b.price);
         break;
-      case "price-desc":
+      }
+      case "price-desc": {
         products.sort((a, b) => b.price - a.price);
         break;
-      case "popularity":
+      }
+      case "popularity": {
         products.sort((a, b) => b.popularity - a.popularity);
         break;
-      case "rating":
+      }
+      case "rating": {
         products.sort((a, b) => b.rating - a.rating);
         break;
+      }
       default:
         break;
     }
@@ -721,35 +732,64 @@ function updateCartSummary(subtotal) {
 }
 
 // ====================== CART EVENT HANDLERS ======================
-document.addEventListener("click", (e) => {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+function handleQtyPlus(product) {
+  product.qty += 1;
+  updateRow(product);
+}
 
+function handleQtyMinus(product) {
+  if (product.qty > 1) {
+    product.qty -= 1;
+    updateRow(product);
+  }
+}
+
+function handleDelete(productIndex, row, cart) {
+  cart.splice(productIndex, 1);
+  row.remove();
+}
+
+function handleClearCart(cart) {
+  cart.length = 0;
+  document.querySelector(".cart-body").innerHTML = "";
+}
+
+function handleContinueShopping() {
+  window.location.hash = "/catalog";
+}
+
+function handleCheckout(cart) {
+  const totalEl = document.querySelector(".cart-summary .summary");
+  const total = totalEl
+    ? parseFloat(totalEl.textContent.replace(/[^0-9.-]+/g, ""))
+    : 0;
+
+  if (total > 0) {
+    alert(`Thank you for your purchase! Your total is ${total}.`);
+    localStorage.removeItem("cart");
+    document.querySelector(".cart-body").innerHTML = "";
+    updateCartBadge(0);
+    updateCartSummary(0);
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  } else {
+    alert("Your cart is empty. Add some products before checkout.");
+  }
+}
+
+document.addEventListener("click", (e) => {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
   const row = e.target.closest("tr[data-product-id]");
   const productId = row?.dataset.productId;
   const productIndex = cart.findIndex((item) => item.id == productId);
   const product = productIndex !== -1 ? cart[productIndex] : null;
 
-  if (e.target.closest(".qty-plus") && product) {
-    product.qty += 1;
-    updateRow(product);
-  }
-
-  if (e.target.closest(".qty-minus") && product) {
-    if (product.qty > 1) {
-      product.qty -= 1;
-      updateRow(product);
-    }
-  }
-
-  if (e.target.closest(".cart-delete") && product) {
-    cart.splice(productIndex, 1);
-    row.remove();
-  }
-
-  if (e.target.closest(".cart .clear")) {
-    cart = [];
-    document.querySelector(".cart-body").innerHTML = "";
-  }
+  if (e.target.closest(".qty-plus") && product) handleQtyPlus(product);
+  if (e.target.closest(".qty-minus") && product) handleQtyMinus(product);
+  if (e.target.closest(".cart-delete") && product)
+    handleDelete(productIndex, row, cart);
+  if (e.target.closest(".cart .clear")) handleClearCart(cart);
+  if (e.target.closest(".cart .continue")) handleContinueShopping();
+  if (e.target.closest(".cart-summary .checkout")) handleCheckout(cart);
 
   if (
     e.target.closest(".qty-plus") ||
@@ -758,7 +798,6 @@ document.addEventListener("click", (e) => {
     e.target.closest(".cart .clear")
   ) {
     localStorage.setItem("cart", JSON.stringify(cart));
-
     const subtotal = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
     updateCartSummary(subtotal);
     updateCartBadge(getCartCount());
@@ -766,28 +805,6 @@ document.addEventListener("click", (e) => {
 
   if (e.target.closest(".cart .clear")) {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  }
-
-  if (e.target.closest(".cart .continue")) {
-    window.location.hash = "/catalog";
-  }
-
-  if (e.target.closest(".cart-summary .checkout")) {
-    const totalEl = document.querySelector(".cart-summary .summary");
-    const total = totalEl
-      ? parseFloat(totalEl.textContent.replace(/[^0-9.-]+/g, ""))
-      : 0;
-
-    if (total > 0) {
-      alert(`Thank you for your purchase! Your total is ${total}.`);
-      localStorage.removeItem("cart");
-      document.querySelector(".cart-body").innerHTML = "";
-      updateCartBadge(0);
-      updateCartSummary(0);
-      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-    } else {
-      alert("Your cart is empty. Add some products before checkout.");
-    }
   }
 });
 
@@ -869,9 +886,6 @@ function initProductPageAddToCart() {
 
     const productWithOptions = {
       ...selectedProduct,
-      /*       size: sizeSelect.value,
-      color: colorSelect.value,
-      category: categorySelect.value, */
       qty,
     };
 
@@ -879,10 +893,7 @@ function initProductPageAddToCart() {
     let cart = JSON.parse(localStorage.getItem(key)) || [];
 
     const existingIndex = cart.findIndex(
-      (item) => item.id === productWithOptions.id /* &&
-        item.size === productWithOptions.size &&
-        item.color === productWithOptions.color &&
-        item.category === productWithOptions.category */
+      (item) => item.id === productWithOptions.id
     );
 
     if (existingIndex !== -1) {
@@ -927,6 +938,39 @@ function showTooltip(btn) {
 }
 
 // ====================== FORM FEADBACK ======================
+function showError(input, message) {
+  const small = input.parentElement.querySelector(".error-message");
+  small.textContent = message;
+  input.classList.add("error");
+}
+
+function clearError(input) {
+  const small = input.parentElement.querySelector(".error-message");
+  small.textContent = "";
+  input.classList.remove("error");
+}
+
+function checkName() {
+  const value = nameInput.value.trim();
+  if (value.length < 2) {
+    showError(nameInput, "Name must be at least 2 characters.");
+    return false;
+  }
+  clearError(nameInput);
+  return true;
+}
+
+function checkEmail() {
+  const value = emailInput.value.trim();
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!re.test(value)) {
+    showError(emailInput, "Enter a valid email address.");
+    return false;
+  }
+  clearError(emailInput);
+  return true;
+}
+
 function initContactFormValidation() {
   const form = document.getElementById("feedback-form");
   if (!form) return;
@@ -935,39 +979,6 @@ function initContactFormValidation() {
   const emailInput = form.querySelector("#email");
   const topicInput = form.querySelector("#topic");
   const messageInput = form.querySelector("#message");
-
-  function showError(input, message) {
-    const small = input.parentElement.querySelector(".error-message");
-    small.textContent = message;
-    input.classList.add("error");
-  }
-
-  function clearError(input) {
-    const small = input.parentElement.querySelector(".error-message");
-    small.textContent = "";
-    input.classList.remove("error");
-  }
-
-  function checkName() {
-    const value = nameInput.value.trim();
-    if (value.length < 2) {
-      showError(nameInput, "Name must be at least 2 characters.");
-      return false;
-    }
-    clearError(nameInput);
-    return true;
-  }
-
-  function checkEmail() {
-    const value = emailInput.value.trim();
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!re.test(value)) {
-      showError(emailInput, "Enter a valid email address.");
-      return false;
-    }
-    clearError(emailInput);
-    return true;
-  }
 
   function checkTopic() {
     if (topicInput.value.trim() === "") {
@@ -1015,39 +1026,6 @@ function initReviewFormValidation() {
   const reviewInput = form.querySelector("#review-text");
   const nameInput = form.querySelector("#review-name");
   const emailInput = form.querySelector("#review-email");
-
-  function showError(input, message) {
-    const small = input.parentElement.querySelector(".error-message");
-    small.textContent = message;
-    input.classList.add("error");
-  }
-
-  function clearError(input) {
-    const small = input.parentElement.querySelector(".error-message");
-    small.textContent = "";
-    input.classList.remove("error");
-  }
-
-  function checkName() {
-    const value = nameInput.value.trim();
-    if (value.length < 2) {
-      showError(nameInput, "Name must be at least 2 characters.");
-      return false;
-    }
-    clearError(nameInput);
-    return true;
-  }
-
-  function checkEmail() {
-    const value = emailInput.value.trim();
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!re.test(value)) {
-      showError(emailInput, "Enter a valid email address.");
-      return false;
-    }
-    clearError(emailInput);
-    return true;
-  }
 
   function checkReview() {
     const value = reviewInput.value.trim();
@@ -1147,29 +1125,6 @@ function initModalWindow() {
       body.style.overflow = "visible";
     }
   });
-
-  function showError(input, message) {
-    const small = input.parentElement.querySelector(".error-message");
-    small.textContent = message;
-    input.classList.add("error");
-  }
-
-  function clearError(input) {
-    const small = input.parentElement.querySelector(".error-message");
-    small.textContent = "";
-    input.classList.remove("error");
-  }
-
-  function checkEmail() {
-    const value = emailInput.value.trim();
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!re.test(value)) {
-      showError(emailInput, "Enter a valid email address.");
-      return false;
-    }
-    clearError(emailInput);
-    return true;
-  }
 
   function checkPassword() {
     const value = passwordInput.value.trim();

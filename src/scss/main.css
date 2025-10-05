@@ -21,9 +21,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1;
-}
-
-:root {
   scroll-behavior: smooth;
 }
 
@@ -310,21 +307,6 @@ select {
 }
 .header .wrapper .header-nav ul li a.active {
   color: #b92770;
-}
-.header .wrapper .header-nav ul {
-  /* li:nth-child(2) a::after {
-    content: "";
-    display: inline-block;
-    width: 12px;
-    height: 8px;
-    vertical-align: middle;
-    margin-top: -4px;
-    margin-left: 4px;
-    background-image: url("../assets/arrow.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-  } */
 }
 
 .tooltip {
@@ -998,6 +980,7 @@ select {
   max-width: 1300px;
   margin: 0 auto;
   margin-top: 120px;
+  margin-bottom: 120px;
   padding: 0 105px;
   min-height: 407px;
   background-image: url("../assets/bg.png");
@@ -1306,13 +1289,6 @@ select {
   font-weight: 400;
   font-size: 17px;
   color: #000;
-}
-
-.offer-section .wrapper {
-  max-width: 1300px;
-  margin: 0 auto;
-  margin-top: 120px;
-  margin-bottom: 120px;
 }
 
 .contact {
@@ -1795,9 +1771,6 @@ select {
   background-size: contain;
   background-repeat: no-repeat;
   pointer-events: none;
-}
-.shop-section .wrapper .shop-content .shop-toolbar .toolbar-controls label {
-  position: relative;
 }
 .shop-section .wrapper .shop-content .shop-toolbar .toolbar-controls label .search-models {
   width: 340px;
@@ -2336,7 +2309,6 @@ select {
 }
 .product-details .wrapper .product-tabs .tabs-content .reviews .review-form form .rating-group .rating-stars .star {
   display: inline-block;
-  /* margin-right: 5px; */
   width: 17px;
   height: 16px;
   background-image: url("/src/assets/border-star.svg");

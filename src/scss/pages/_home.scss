@@ -335,6 +335,7 @@
   .wrapper {
     @include wrapper;
     margin-top: 120px;
+    margin-bottom: 120px;
     padding: 0 105px;
     min-height: 407px;
     background-image: url("../assets/bg.png");
