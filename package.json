@@ -11,12 +11,13 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "exit 0",
+    "test": "jest",
     "sass": "sass src/scss/main.scss src/scss/main.css",
     "sass:watch": "sass --watch src/scss/main.scss:src/scss/main.css",
     "build": "npm run sass"
   },
   "devDependencies": {
+    "jest": "^29.7.0",
     "sass": "^1.93.2"
   }
 }
