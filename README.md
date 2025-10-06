@@ -1,6 +1,6 @@
 # project-template-ua
 
-[Перейти на Best Shop](https://vitaliykoval.github.io/best-shop/)
+[🚀 **ПЕРЕЙТИ НА BEST SHOP** 🛒](https://vitaliykoval.github.io/best-shop/)
 
 ## Опис
 
