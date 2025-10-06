@@ -956,7 +956,7 @@ function clearError(input) {
   input.classList.remove("error");
 }
 
-function checkName() {
+function checkName(nameInput) {
   const value = nameInput.value.trim();
   if (value.length < 2) {
     showError(nameInput, "Name must be at least 2 characters.");
@@ -966,7 +966,7 @@ function checkName() {
   return true;
 }
 
-function checkEmail() {
+function checkEmail(emailInput) {
   const value = emailInput.value.trim();
   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!re.test(value)) {
@@ -1007,8 +1007,8 @@ function initContactFormValidation() {
 
   [nameInput, emailInput, topicInput, messageInput].forEach((input) =>
     input.addEventListener("blur", () => {
-      if (input === nameInput) checkName();
-      if (input === emailInput) checkEmail();
+      if (input === nameInput) checkName(nameInput);
+      if (input === emailInput) checkEmail(emailInput);
       if (input === topicInput) checkTopic();
       if (input === messageInput) checkMessage();
     })
@@ -1016,7 +1016,11 @@ function initContactFormValidation() {
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    const valid = checkName() && checkEmail() && checkTopic() && checkMessage();
+    const valid =
+      checkName(nameInput) &&
+      checkEmail(emailInput) &&
+      checkTopic() &&
+      checkMessage();
     if (valid) {
       alert("Form sent successfully!");
       form.reset();
@@ -1046,14 +1050,15 @@ function initReviewFormValidation() {
   [reviewInput, nameInput, emailInput].forEach((input) => {
     input.addEventListener("blur", () => {
       if (input === reviewInput) checkReview();
-      if (input === nameInput) checkName();
-      if (input === emailInput) checkEmail();
+      if (input === nameInput) checkName(nameInput);
+      if (input === emailInput) checkEmail(emailInput);
     });
   });
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    const valid = checkReview() && checkName() && checkEmail();
+    const valid =
+      checkReview() && checkName(nameInput) && checkEmail(emailInput);
     if (valid) {
       alert("Review submitted successfully!");
       form.reset();
@@ -1123,7 +1128,7 @@ function initModalWindow() {
 
   modalForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    const valid = checkEmail() && checkPassword();
+    const valid = checkEmail(emailInput) && checkPassword();
     if (valid) {
       alert("Successfully logged in!");
       modalForm.reset();
@@ -1144,7 +1149,7 @@ function initModalWindow() {
 
   [emailInput, passwordInput].forEach((input) =>
     input.addEventListener("blur", () => {
-      if (input === emailInput) checkEmail();
+      if (input === emailInput) checkEmail(emailInput);
       if (input === passwordInput) checkPassword();
     })
   );
