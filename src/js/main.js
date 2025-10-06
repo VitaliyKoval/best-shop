@@ -212,8 +212,8 @@ window.addEventListener("hashchange", () => {
 
 // ====================== INIT CONTENT ======================
 async function init() {
-  await loadHTML(".header", "/src/components/header.html");
-  await loadHTML(".footer", "/src/components/footer.html");
+  await loadHTML(".header", "./components/header.html");
+  await loadHTML(".footer", "./components/footer.html");
 
   initModalWindow();
 
@@ -266,7 +266,7 @@ async function loadProductCards(containerSelector, blockName) {
   const isSwiper = container.classList.contains("swiper-wrapper");
 
   try {
-    const res = await fetch("/src/assets/data.json");
+    const res = await fetch("./assets/data.json");
     if (!res.ok) throw new Error("Failed to load JSON");
     const { data } = await res.json();
 
@@ -274,7 +274,7 @@ async function loadProductCards(containerSelector, blockName) {
     if (blockName)
       products = data.filter((item) => item.blocks.includes(blockName));
 
-    const templateRes = await fetch("/src/components/product-card.html");
+    const templateRes = await fetch("./components/product-card.html");
     if (!templateRes.ok)
       throw new Error("Failed to load template product-card.html");
     const templateHTML = await templateRes.text();
@@ -312,7 +312,7 @@ async function loadBestProductCards(containerSelector, blockName) {
   if (!container) return;
 
   try {
-    const res = await fetch("/src/assets/data.json");
+    const res = await fetch("./assets/data.json");
     if (!res.ok) throw new Error("Failed to load JSON");
     const { data } = await res.json();
 
@@ -320,7 +320,7 @@ async function loadBestProductCards(containerSelector, blockName) {
     if (blockName)
       products = data.filter((item) => item.blocks.includes(blockName));
 
-    const templateRes = await fetch("/src/components/product-card.html");
+    const templateRes = await fetch("./components/product-card.html");
     if (!templateRes.ok)
       throw new Error("Failed to load template product-card.html");
     const templateHTML = await templateRes.text();
@@ -365,7 +365,7 @@ async function loadAllProductCards(
 
   try {
     if (!allProductsCache.length) {
-      const res = await fetch("/src/assets/data.json");
+      const res = await fetch("./assets/data.json");
       if (!res.ok) throw new Error("Failed to load JSON");
       const { data } = await res.json();
       allProductsCache = data;
@@ -398,7 +398,7 @@ async function loadAllProductCards(
     const end = Math.min(start + perPage, products.length);
     const paginatedProducts = products.slice(start, end);
 
-    const templateRes = await fetch("/src/components/product-card.html");
+    const templateRes = await fetch("./components/product-card.html");
     const templateHTML = await templateRes.text();
     const tempDiv = document.createElement("div");
     tempDiv.innerHTML = templateHTML.trim();

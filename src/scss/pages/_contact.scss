@@ -1,7 +1,7 @@
 @use "../abstracts/mixins" as *;
 
 .contact {
-  background: url("/src/assets/bg_2.png");
+  background: url("../assets/bg_2.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -112,7 +112,7 @@
         width: 633px;
         height: 700px;
         background-size: 125% auto;
-        background-image: url("/src/assets/feadback.png");
+        background-image: url("../assets/feadback.png");
         background-position: 50% 35%;
         background-repeat: no-repeat;
 

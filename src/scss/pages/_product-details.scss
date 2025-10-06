@@ -92,15 +92,15 @@
             }
 
             .star.full {
-              background-image: url("/src/assets/full-star.svg");
+              background-image: url("../assets/full-star.svg");
             }
 
             .star.half {
-              background-image: url("/src/assets/half-star.svg");
+              background-image: url("../assets/half-star.svg");
             }
 
             .star.empty {
-              background-image: url("/src/assets/empty-star.svg");
+              background-image: url("../assets/empty-star.svg");
             }
 
             .reviews-count {
@@ -395,18 +395,18 @@
                         margin-right: 5px;
                         width: 17px;
                         height: 16px;
-                        background-image: url("/src/assets/border-star.svg");
+                        background-image: url("../assets/border-star.svg");
                         background-position: center;
                         background-size: contain;
                         background-repeat: no-repeat;
                       }
 
                       .star.full {
-                        background-image: url("/src/assets/full-star.svg");
+                        background-image: url("../assets/full-star.svg");
                       }
 
                       .star.empty {
-                        background-image: url("/src/assets/empty-star.svg");
+                        background-image: url("../assets/empty-star.svg");
                       }
                     }
                   }
@@ -474,14 +474,14 @@
                     display: inline-block;
                     width: 17px;
                     height: 16px;
-                    background-image: url("/src/assets/border-star.svg");
+                    background-image: url("../assets/border-star.svg");
                     background-position: center;
                     background-size: contain;
                     background-repeat: no-repeat;
                   }
 
                   .star.full {
-                    background-image: url("/src/assets/full-star.svg");
+                    background-image: url("../assets/full-star.svg");
                   }
                 }
               }

@@ -2,7 +2,7 @@
 
 .cart-hero {
   height: 229px;
-  background: url("/src/assets/road.png");
+  background: url("../assets/road.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -125,7 +125,7 @@
               .cart-delete {
                 width: 20px;
                 height: 22px;
-                background: url("/src/assets/delete.svg");
+                background: url("../assets/delete.svg");
                 background-position: center;
                 background-size: contain;
                 background-repeat: no-repeat;

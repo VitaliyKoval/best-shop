@@ -163,13 +163,13 @@ select {
   background-repeat: no-repeat;
 }
 .best-product-card .content .rating .star.full {
-  background-image: url("/src/assets/full-star.svg");
+  background-image: url("../assets/full-star.svg");
 }
 .best-product-card .content .rating .star.half {
-  background-image: url("/src/assets/half-star.svg");
+  background-image: url("../assets/half-star.svg");
 }
 .best-product-card .content .rating .star.empty {
-  background-image: url("/src/assets/empty-star.svg");
+  background-image: url("../assets/empty-star.svg");
 }
 .best-product-card .content .price {
   margin-top: 8px;
@@ -443,7 +443,7 @@ select {
   height: 40px;
   top: 16px;
   right: 16px;
-  background-image: url(/src/assets/X.svg);
+  background-image: url(../assets/X.svg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -1156,7 +1156,7 @@ select {
 }
 
 .about {
-  background: url("/src/assets/bg_1.png");
+  background: url("../assets/bg_1.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -1292,7 +1292,7 @@ select {
 }
 
 .contact {
-  background: url("/src/assets/bg_2.png");
+  background: url("../assets/bg_2.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -1393,7 +1393,7 @@ select {
   width: 633px;
   height: 700px;
   background-size: 125% auto;
-  background-image: url("/src/assets/feadback.png");
+  background-image: url("../assets/feadback.png");
   background-position: 50% 35%;
   background-repeat: no-repeat;
 }
@@ -1495,7 +1495,7 @@ select {
 
 .cart-hero {
   height: 229px;
-  background: url("/src/assets/road.png");
+  background: url("../assets/road.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -1604,7 +1604,7 @@ select {
 .cart .wrapper .table-wrapper .cart-table .cart-body tr .delete .cart-delete {
   width: 20px;
   height: 22px;
-  background: url("/src/assets/delete.svg");
+  background: url("../assets/delete.svg");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -1980,13 +1980,13 @@ select {
   background-repeat: no-repeat;
 }
 .product-details .wrapper .product-wrapper .product-info-wrapper .product-info .product-rating .star.full {
-  background-image: url("/src/assets/full-star.svg");
+  background-image: url("../assets/full-star.svg");
 }
 .product-details .wrapper .product-wrapper .product-info-wrapper .product-info .product-rating .star.half {
-  background-image: url("/src/assets/half-star.svg");
+  background-image: url("../assets/half-star.svg");
 }
 .product-details .wrapper .product-wrapper .product-info-wrapper .product-info .product-rating .star.empty {
-  background-image: url("/src/assets/empty-star.svg");
+  background-image: url("../assets/empty-star.svg");
 }
 .product-details .wrapper .product-wrapper .product-info-wrapper .product-info .product-rating .reviews-count {
   font-family: var(--font-family);
@@ -2247,16 +2247,16 @@ select {
   margin-right: 5px;
   width: 17px;
   height: 16px;
-  background-image: url("/src/assets/border-star.svg");
+  background-image: url("../assets/border-star.svg");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
 }
 .product-details .wrapper .product-tabs .tabs-content .reviews .reviews-list .review .review-content .review-header .review-meta .review-rating .star.full {
-  background-image: url("/src/assets/full-star.svg");
+  background-image: url("../assets/full-star.svg");
 }
 .product-details .wrapper .product-tabs .tabs-content .reviews .reviews-list .review .review-content .review-header .review-meta .review-rating .star.empty {
-  background-image: url("/src/assets/empty-star.svg");
+  background-image: url("../assets/empty-star.svg");
 }
 .product-details .wrapper .product-tabs .tabs-content .reviews .reviews-list .review .review-content .review-text {
   margin-top: 30px;
@@ -2311,13 +2311,13 @@ select {
   display: inline-block;
   width: 17px;
   height: 16px;
-  background-image: url("/src/assets/border-star.svg");
+  background-image: url("../assets/border-star.svg");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
 }
 .product-details .wrapper .product-tabs .tabs-content .reviews .review-form form .rating-group .rating-stars .star.full {
-  background-image: url("/src/assets/full-star.svg");
+  background-image: url("../assets/full-star.svg");
 }
 .product-details .wrapper .product-tabs .tabs-content .reviews .review-form form .form-textarea {
   margin-top: 30px;
