@@ -1,0 +1,72 @@
+<section class="cart-hero">
+  <div class="wrapper">
+    <h1 class="cart-title">My Cart</h1>
+  </div>
+</section>
+
+<section class="cart">
+  <div class="wrapper">
+    <div class="table-wrapper">
+      <table class="cart-table">
+        <thead class="cart-head">
+          <tr>
+            <th>Image</th>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+
+        <tbody class="cart-body">
+          <template id="cart-item-template">
+            <tr class="cart-item" data-product="">
+              <td class="cart-image">
+                <img src="" alt="Product" class="image" />
+              </td>
+              <td class="name"></td>
+              <td class="price"></td>
+              <td class="quantity">
+                <button class="qty-minus">-</button>
+                <span class="qty">1</span>
+                <button class="qty-plus">+</button>
+              </td>
+              <td class="total"></td>
+              <td class="delete">
+                <button class="cart-delete"></button>
+              </td>
+            </tr>
+          </template>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="cart-bottom">
+      <div class="cart-actions">
+        <button class="btn continue">Continue Shopping</button>
+        <button class="btn clear">Clear Shopping Cart</button>
+      </div>
+
+      <aside class="cart-summary">
+        <div class="summary-row">
+          <span>Sub Total</span>
+          <span class="subtotal"></span>
+        </div>
+        <div class="summary-row discount-row">
+          <span>Discount</span>
+          <span class="discount"></span>
+        </div>
+        <div class="summary-row">
+          <span>Shipping</span>
+          <span class="shipping"></span>
+        </div>
+        <div class="summary-row total">
+          <span>Total</span>
+          <span class="summary"></span>
+        </div>
+        <button class="checkout">Checkout</button>
+      </aside>
+    </div>
+  </div>
+</section>
