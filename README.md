@@ -1,5 +1,7 @@
 # project-template-ua
 
+[Перейти на Best Shop](https://vitaliykoval.github.io/best-shop/)
+
 ## Опис
 
 Цей проект — шаблон сучасного інтерфейсу магазину з каталогом, корзиною, деталями товару та іншими сторінками. Використовуються HTML, SCSS, JavaScript, Swiper.js та LocalStorage для інтерактиву.
